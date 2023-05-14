@@ -16,11 +16,16 @@ func PaginaNF(rw http.ResponseWriter, r *http.Request) {
 	http.NotFound(rw, r)
 }
 
+func Error(rw http.ResponseWriter, r *http.Request) {
+	http.Error(rw, "Este es un error", http.StatusConflict)
+}
+
 func main() {
 
 	//Router
 	http.HandleFunc("/", Hola)
 	http.HandleFunc("/page", PaginaNF)
+	http.HandleFunc("/error", Error)
 
 	//Crear servidor
 
