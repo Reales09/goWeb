@@ -20,12 +20,24 @@ func Error(rw http.ResponseWriter, r *http.Request) {
 	http.Error(rw, "Este es un error", http.StatusConflict)
 }
 
+func Saludar(rw http.ResponseWriter, r *http.Request) {
+	fmt.Println(r.URL)
+	fmt.Println(r.URL.RawQuery)
+	fmt.Println(r.URL.Query())
+
+	name := r.URL.Query().Get("name")
+	age := r.URL.Query().Get("age")
+	fmt.Fprintf(rw, "Hola %s tu edad es %s", name, age)
+
+}
+
 func main() {
 
 	//Router
 	http.HandleFunc("/", Hola)
 	http.HandleFunc("/page", PaginaNF)
 	http.HandleFunc("/error", Error)
+	http.HandleFunc("/saludar", Saludar)
 
 	//Crear servidor
 
