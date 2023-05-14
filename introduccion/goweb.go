@@ -8,7 +8,8 @@ import (
 
 // Handlers
 func Hola(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(rw, "Hola Mundo")
+	fmt.Println("El metodo es + " + r.Method)
+	fmt.Fprintln(rw, "Hola fifi")
 }
 
 func main() {
